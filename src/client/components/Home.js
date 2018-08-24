@@ -2,7 +2,7 @@ import React from "react";
 
 const Home = () => (
   <div>
-    <p>I'm The Home Component</p>
+    <p>I'm The Home Components</p>
     <button onClick={() => console.log("Hello")}>Press Me</button>
   </div>
 );
