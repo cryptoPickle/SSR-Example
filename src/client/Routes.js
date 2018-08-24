@@ -1,15 +1,14 @@
-import Home from "./components/Home";
-import UsersList, { load } from "./components/UsersList";
+import Home from "./Pages/Home";
+import UsersList from "./Pages/UsersList";
 
 export default [
   {
+    ...Home,
     path: "/",
-    component: Home,
     exact: true
   },
   {
-    load,
-    path: "/users",
-    component: UsersList
+    ...UsersList,
+    path: "/users"
   }
 ];

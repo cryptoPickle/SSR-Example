@@ -86,6 +86,30 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./src/client/Pages/Home.js":
+/*!**********************************!*\
+  !*** ./src/client/Pages/Home.js ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _react = __webpack_require__(/*! react */ \"react\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar Home = function Home() {\n  return _react2.default.createElement(\n    \"div\",\n    null,\n    _react2.default.createElement(\n      \"p\",\n      null,\n      \"I'm The Home Components\"\n    ),\n    _react2.default.createElement(\n      \"button\",\n      { onClick: function onClick() {\n          return console.log(\"Hello\");\n        } },\n      \"Press Me\"\n    )\n  );\n};\n\nexports.default = {\n  component: Home\n};\n\n//# sourceURL=webpack:///./src/client/Pages/Home.js?");
+
+/***/ }),
+
+/***/ "./src/client/Pages/UsersList.js":
+/*!***************************************!*\
+  !*** ./src/client/Pages/UsersList.js ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.load = undefined;\n\nvar _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\"value\" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();\n\nvar _react = __webpack_require__(/*! react */ \"react\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _reactRedux = __webpack_require__(/*! react-redux */ \"react-redux\");\n\nvar _actions = __webpack_require__(/*! ../Redux/actions */ \"./src/client/Redux/actions.js\");\n\nvar _loadData = __webpack_require__(/*! ../utils/loadData */ \"./src/client/utils/loadData.js\");\n\nvar _loadData2 = _interopRequireDefault(_loadData);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nfunction _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError(\"this hasn't been initialised - super() hasn't been called\"); } return call && (typeof call === \"object\" || typeof call === \"function\") ? call : self; }\n\nfunction _inherits(subClass, superClass) { if (typeof superClass !== \"function\" && superClass !== null) { throw new TypeError(\"Super expression must either be null or a function, not \" + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }\n\nvar UserList = function (_Component) {\n  _inherits(UserList, _Component);\n\n  function UserList() {\n    _classCallCheck(this, UserList);\n\n    return _possibleConstructorReturn(this, (UserList.__proto__ || Object.getPrototypeOf(UserList)).apply(this, arguments));\n  }\n\n  _createClass(UserList, [{\n    key: 'componentDidMount',\n    value: function componentDidMount() {\n      this.props.fetchUsers();\n    }\n  }, {\n    key: 'renderUsers',\n    value: function renderUsers() {\n      return this.props.users.map(function (user) {\n        return _react2.default.createElement(\n          'li',\n          { key: user.id },\n          user.name\n        );\n      });\n    }\n  }, {\n    key: 'render',\n    value: function render() {\n      return _react2.default.createElement(\n        'div',\n        null,\n        'Here\\'s is the list of users',\n        _react2.default.createElement(\n          'ul',\n          null,\n          this.renderUsers()\n        )\n      );\n    }\n  }]);\n\n  return UserList;\n}(_react.Component);\n\nvar mapStateToProps = function mapStateToProps(_ref) {\n  var users = _ref.users;\n\n  return {\n    users: users.userList\n  };\n};\n\nvar load = (0, _loadData2.default)(_actions.fetchUsers);\nexports.load = load;\nexports.default = {\n  component: (0, _reactRedux.connect)(mapStateToProps, { fetchUsers: _actions.fetchUsers })(UserList),\n  load: load\n};\n\n//# sourceURL=webpack:///./src/client/Pages/UsersList.js?");
+
+/***/ }),
+
 /***/ "./src/client/Redux/actions.js":
 /*!*************************************!*\
   !*** ./src/client/Redux/actions.js ***!
@@ -94,7 +118,7 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.fetchUsers = exports.FETCH_USERS = undefined;\n\nvar _axios = __webpack_require__(/*! axios */ \"axios\");\n\nvar _axios2 = _interopRequireDefault(_axios);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nfunction _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step(\"next\", value); }, function (err) { step(\"throw\", err); }); } } return step(\"next\"); }); }; }\n\nvar request = _axios2.default.create({\n  baseURL: \"https://react-ssr-api.herokuapp.com\"\n});\n\nvar FETCH_USERS = exports.FETCH_USERS = \"fetch_users\";\n\nvar fetchUsers = exports.fetchUsers = function fetchUsers() {\n  return function () {\n    var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(dispatch) {\n      var _ref2, data;\n\n      return regeneratorRuntime.wrap(function _callee$(_context) {\n        while (1) {\n          switch (_context.prev = _context.next) {\n            case 0:\n              _context.next = 2;\n              return request.get(\"/users\");\n\n            case 2:\n              _ref2 = _context.sent;\n              data = _ref2.data;\n\n\n              dispatch({\n                type: FETCH_USERS,\n                payload: data\n              });\n\n            case 5:\n            case \"end\":\n              return _context.stop();\n          }\n        }\n      }, _callee, undefined);\n    }));\n\n    return function (_x) {\n      return _ref.apply(this, arguments);\n    };\n  }();\n};\n\n//# sourceURL=webpack:///./src/client/Redux/actions.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.fetchUsers = exports.FETCH_USERS = undefined;\n\nvar _axios = __webpack_require__(/*! axios */ \"axios\");\n\nvar _axios2 = _interopRequireDefault(_axios);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nfunction _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step(\"next\", value); }, function (err) { step(\"throw\", err); }); } } return step(\"next\"); }); }; }\n\nvar request = _axios2.default.create({\n  baseURL: 'https://react-ssr-api.herokuapp.com'\n});\n\nvar FETCH_USERS = exports.FETCH_USERS = 'fetch_users';\n\nvar fetchUsers = exports.fetchUsers = function fetchUsers() {\n  return function () {\n    var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(dispatch) {\n      var _ref2, data;\n\n      return regeneratorRuntime.wrap(function _callee$(_context) {\n        while (1) {\n          switch (_context.prev = _context.next) {\n            case 0:\n              _context.next = 2;\n              return request.get('/users');\n\n            case 2:\n              _ref2 = _context.sent;\n              data = _ref2.data;\n\n\n              dispatch({\n                type: FETCH_USERS,\n                payload: data\n              });\n\n            case 5:\n            case 'end':\n              return _context.stop();\n          }\n        }\n      }, _callee, undefined);\n    }));\n\n    return function (_x) {\n      return _ref.apply(this, arguments);\n    };\n  }();\n};\n\n//# sourceURL=webpack:///./src/client/Redux/actions.js?");
 
 /***/ }),
 
@@ -130,31 +154,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _Home = __webpack_require__(/*! ./components/Home */ \"./src/client/components/Home.js\");\n\nvar _Home2 = _interopRequireDefault(_Home);\n\nvar _UsersList = __webpack_require__(/*! ./components/UsersList */ \"./src/client/components/UsersList.js\");\n\nvar _UsersList2 = _interopRequireDefault(_UsersList);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nexports.default = [{\n  path: \"/\",\n  component: _Home2.default,\n  exact: true\n}, {\n  load: _UsersList.load,\n  path: \"/users\",\n  component: _UsersList2.default\n}];\n\n//# sourceURL=webpack:///./src/client/Routes.js?");
-
-/***/ }),
-
-/***/ "./src/client/components/Home.js":
-/*!***************************************!*\
-  !*** ./src/client/components/Home.js ***!
-  \***************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _react = __webpack_require__(/*! react */ \"react\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar Home = function Home() {\n  return _react2.default.createElement(\n    \"div\",\n    null,\n    _react2.default.createElement(\n      \"p\",\n      null,\n      \"I'm The Home Components\"\n    ),\n    _react2.default.createElement(\n      \"button\",\n      { onClick: function onClick() {\n          return console.log(\"Hello\");\n        } },\n      \"Press Me\"\n    )\n  );\n};\n\nexports.default = Home;\n\n//# sourceURL=webpack:///./src/client/components/Home.js?");
-
-/***/ }),
-
-/***/ "./src/client/components/UsersList.js":
-/*!********************************************!*\
-  !*** ./src/client/components/UsersList.js ***!
-  \********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.load = undefined;\n\nvar _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\"value\" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();\n\nvar _react = __webpack_require__(/*! react */ \"react\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _reactRedux = __webpack_require__(/*! react-redux */ \"react-redux\");\n\nvar _actions = __webpack_require__(/*! ../Redux/actions */ \"./src/client/Redux/actions.js\");\n\nvar _loadData = __webpack_require__(/*! ../utils/loadData */ \"./src/client/utils/loadData.js\");\n\nvar _loadData2 = _interopRequireDefault(_loadData);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nfunction _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError(\"this hasn't been initialised - super() hasn't been called\"); } return call && (typeof call === \"object\" || typeof call === \"function\") ? call : self; }\n\nfunction _inherits(subClass, superClass) { if (typeof superClass !== \"function\" && superClass !== null) { throw new TypeError(\"Super expression must either be null or a function, not \" + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }\n\nvar UserList = function (_Component) {\n  _inherits(UserList, _Component);\n\n  function UserList() {\n    _classCallCheck(this, UserList);\n\n    return _possibleConstructorReturn(this, (UserList.__proto__ || Object.getPrototypeOf(UserList)).apply(this, arguments));\n  }\n\n  _createClass(UserList, [{\n    key: \"componentDidMount\",\n    value: function componentDidMount() {\n      this.props.fetchUsers();\n    }\n  }, {\n    key: \"renderUsers\",\n    value: function renderUsers() {\n      return this.props.users.map(function (user) {\n        return _react2.default.createElement(\n          \"li\",\n          { key: user.id },\n          user.name\n        );\n      });\n    }\n  }, {\n    key: \"render\",\n    value: function render() {\n      return _react2.default.createElement(\n        \"div\",\n        null,\n        \"Here's is the list of users\",\n        _react2.default.createElement(\n          \"ul\",\n          null,\n          this.renderUsers()\n        )\n      );\n    }\n  }]);\n\n  return UserList;\n}(_react.Component);\n\nvar mapStateToProps = function mapStateToProps(_ref) {\n  var users = _ref.users;\n\n  return {\n    users: users.userList\n  };\n};\n\nvar load = (0, _loadData2.default)(_actions.fetchUsers);\nexports.load = load;\nexports.default = (0, _reactRedux.connect)(mapStateToProps, { fetchUsers: _actions.fetchUsers })(UserList);\n\n//# sourceURL=webpack:///./src/client/components/UsersList.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };\n\nvar _Home = __webpack_require__(/*! ./Pages/Home */ \"./src/client/Pages/Home.js\");\n\nvar _Home2 = _interopRequireDefault(_Home);\n\nvar _UsersList = __webpack_require__(/*! ./Pages/UsersList */ \"./src/client/Pages/UsersList.js\");\n\nvar _UsersList2 = _interopRequireDefault(_UsersList);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nexports.default = [_extends({}, _Home2.default, {\n  path: \"/\",\n  exact: true\n}), _extends({}, _UsersList2.default, {\n  path: \"/users\"\n})];\n\n//# sourceURL=webpack:///./src/client/Routes.js?");
 
 /***/ }),
 
@@ -202,7 +202,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _react = __webpack_require__(/*! react */ \"react\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _server = __webpack_require__(/*! react-dom/server */ \"react-dom/server\");\n\nvar _reactRouterDom = __webpack_require__(/*! react-router-dom */ \"react-router-dom\");\n\nvar _reactRedux = __webpack_require__(/*! react-redux */ \"react-redux\");\n\nvar _reactRouterConfig = __webpack_require__(/*! react-router-config */ \"react-router-config\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nexports.default = function (Routes, req, store) {\n  var content = (0, _server.renderToString)(_react2.default.createElement(\n    _reactRedux.Provider,\n    { store: store },\n    _react2.default.createElement(\n      _reactRouterDom.StaticRouter,\n      { location: req.path, context: {} },\n      _react2.default.createElement(\n        _react.Fragment,\n        null,\n        (0, _reactRouterConfig.renderRoutes)(Routes)\n      )\n    )\n  ));\n  return \"\\n    <html> \\n      <head></head>\\n      <body>\\n        <div id='root'>\" + content + \"</div>\\n        <script src='bundle.js'></script>\\n      </body>\\n    </html>\\n  \";\n};\n\n//# sourceURL=webpack:///./src/utils/renderer.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _react = __webpack_require__(/*! react */ \"react\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _server = __webpack_require__(/*! react-dom/server */ \"react-dom/server\");\n\nvar _reactRouterDom = __webpack_require__(/*! react-router-dom */ \"react-router-dom\");\n\nvar _reactRedux = __webpack_require__(/*! react-redux */ \"react-redux\");\n\nvar _reactRouterConfig = __webpack_require__(/*! react-router-config */ \"react-router-config\");\n\nvar _serializeJavascript = __webpack_require__(/*! serialize-javascript */ \"serialize-javascript\");\n\nvar _serializeJavascript2 = _interopRequireDefault(_serializeJavascript);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nexports.default = function (Routes, req, store) {\n  var content = (0, _server.renderToString)(_react2.default.createElement(\n    _reactRedux.Provider,\n    { store: store },\n    _react2.default.createElement(\n      _reactRouterDom.StaticRouter,\n      { location: req.path, context: {} },\n      _react2.default.createElement(\n        _react.Fragment,\n        null,\n        (0, _reactRouterConfig.renderRoutes)(Routes)\n      )\n    )\n  ));\n  return '\\n    <html> \\n      <head></head>\\n      <body>\\n        <div id=\\'root\\'>' + content + '</div>\\n        <script>\\n          window.INITIAL_STATE = ' + (0, _serializeJavascript2.default)(store.getState()) + '\\n        </script>\\n        <script src=\\'bundle.js\\'></script>\\n      </body>\\n    </html>\\n  ';\n};\n\n//# sourceURL=webpack:///./src/utils/renderer.js?");
 
 /***/ }),
 
@@ -313,6 +313,17 @@ eval("module.exports = require(\"redux\");\n\n//# sourceURL=webpack:///external_
 /***/ (function(module, exports) {
 
 eval("module.exports = require(\"redux-thunk\");\n\n//# sourceURL=webpack:///external_%22redux-thunk%22?");
+
+/***/ }),
+
+/***/ "serialize-javascript":
+/*!***************************************!*\
+  !*** external "serialize-javascript" ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = require(\"serialize-javascript\");\n\n//# sourceURL=webpack:///external_%22serialize-javascript%22?");
 
 /***/ })
 
