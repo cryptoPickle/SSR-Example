@@ -18,6 +18,6 @@ const webpackConfig = require(`./webpack/${nodeEnv[env]}/webpack.${
 }`);
 
 const envcommon = require(`./webpack/${nodeEnv[env]}/webpack.common`);
-const rootCommon = require("./webpack/webpack.common");
+const rootCommon = require("./webpack/webpack.common")(env);
 
 module.exports = webpackMerge([rootCommon, envcommon, webpackConfig]);

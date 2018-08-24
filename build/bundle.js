@@ -36,12 +36,32 @@
 /******/ 	// define getter function for harmony exports
 /******/ 	__webpack_require__.d = function(exports, name, getter) {
 /******/ 		if(!__webpack_require__.o(exports, name)) {
-/******/ 			Object.defineProperty(exports, name, {
-/******/ 				configurable: false,
-/******/ 				enumerable: true,
-/******/ 				get: getter
-/******/ 			});
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
 /******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
 /******/ 	};
 /******/
 /******/ 	// getDefaultExport function for compatibility with non-harmony modules
@@ -59,122 +79,80 @@
 /******/ 	// __webpack_public_path__
 /******/ 	__webpack_require__.p = "";
 /******/
+/******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 2);
+/******/ 	return __webpack_require__(__webpack_require__.s = "./src/index.js");
 /******/ })
 /************************************************************************/
-/******/ ([
-/* 0 */
-/***/ (function(module, exports) {
+/******/ ({
 
-module.exports = require("react");
-
-/***/ }),
-/* 1 */
+/***/ "./src/client/components/Home.js":
+/*!***************************************!*\
+  !*** ./src/client/components/Home.js ***!
+  \***************************************/
+/*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Home = function Home() {
-  return _react2.default.createElement(
-    "div",
-    null,
-    _react2.default.createElement(
-      "p",
-      null,
-      "I'm The Home Component"
-    ),
-    _react2.default.createElement(
-      "button",
-      { onClick: function onClick() {
-          return console.log("Hello");
-        } },
-      "Press Me"
-    )
-  );
-};
-
-exports.default = Home;
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _react = __webpack_require__(/*! react */ \"react\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar Home = function Home() {\n  return _react2.default.createElement(\n    \"div\",\n    null,\n    _react2.default.createElement(\n      \"p\",\n      null,\n      \"I'm The Home Component\"\n    ),\n    _react2.default.createElement(\n      \"button\",\n      { onClick: function onClick() {\n          return console.log(\"Hello\");\n        } },\n      \"Press Me\"\n    )\n  );\n};\n\nexports.default = Home;\n\n//# sourceURL=webpack:///./src/client/components/Home.js?");
 
 /***/ }),
-/* 2 */
+
+/***/ "./src/index.js":
+/*!**********************!*\
+  !*** ./src/index.js ***!
+  \**********************/
+/*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
-
-var _express = __webpack_require__(3);
-
-var _express2 = _interopRequireDefault(_express);
-
-var _renderer = __webpack_require__(4);
-
-var _renderer2 = _interopRequireDefault(_renderer);
-
-var _Home = __webpack_require__(1);
-
-var _Home2 = _interopRequireDefault(_Home);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var app = (0, _express2.default)();
-
-app.use(_express2.default.static("public"));
-
-app.get("/", function (req, res) {
-  res.send((0, _renderer2.default)(_Home2.default));
-});
-
-app.listen(3000, function () {
-  return console.log("Listening 3000");
-});
+eval("\n\nvar _express = __webpack_require__(/*! express */ \"express\");\n\nvar _express2 = _interopRequireDefault(_express);\n\nvar _renderer = __webpack_require__(/*! ./utils/renderer */ \"./src/utils/renderer.js\");\n\nvar _renderer2 = _interopRequireDefault(_renderer);\n\nvar _Home = __webpack_require__(/*! ./client/components/Home */ \"./src/client/components/Home.js\");\n\nvar _Home2 = _interopRequireDefault(_Home);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar app = (0, _express2.default)();\n\napp.use(_express2.default.static(\"public\"));\n\napp.get(\"/\", function (req, res) {\n  res.send((0, _renderer2.default)(_Home2.default));\n});\n\napp.listen(3000, function () {\n  return console.log(\"Listening 3000\");\n});\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ }),
-/* 3 */
-/***/ (function(module, exports) {
 
-module.exports = require("express");
-
-/***/ }),
-/* 4 */
+/***/ "./src/utils/renderer.js":
+/*!*******************************!*\
+  !*** ./src/utils/renderer.js ***!
+  \*******************************/
+/*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _server = __webpack_require__(5);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = function (Component) {
-  var content = (0, _server.renderToString)(_react2.default.createElement(Component, null));
-  return "\n    <html> \n      <head></head>\n      <body>\n        <div id='root'>" + content + "</div>\n        <script src='bundle.js'></script>\n      </body>\n    </html>\n  ";
-};
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _react = __webpack_require__(/*! react */ \"react\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _server = __webpack_require__(/*! react-dom/server */ \"react-dom/server\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nexports.default = function (Component) {\n  var content = (0, _server.renderToString)(_react2.default.createElement(Component, null));\n  return \"\\n    <html> \\n      <head></head>\\n      <body>\\n        <div id='root'>\" + content + \"</div>\\n        <script src='bundle.js'></script>\\n      </body>\\n    </html>\\n  \";\n};\n\n//# sourceURL=webpack:///./src/utils/renderer.js?");
 
 /***/ }),
-/* 5 */
+
+/***/ "express":
+/*!**************************!*\
+  !*** external "express" ***!
+  \**************************/
+/*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = require("react-dom/server");
+eval("module.exports = require(\"express\");\n\n//# sourceURL=webpack:///external_%22express%22?");
+
+/***/ }),
+
+/***/ "react":
+/*!************************!*\
+  !*** external "react" ***!
+  \************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = require(\"react\");\n\n//# sourceURL=webpack:///external_%22react%22?");
+
+/***/ }),
+
+/***/ "react-dom/server":
+/*!***********************************!*\
+  !*** external "react-dom/server" ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = require(\"react-dom/server\");\n\n//# sourceURL=webpack:///external_%22react-dom/server%22?");
 
 /***/ })
-/******/ ]);
+
+/******/ });
