@@ -1,3 +1,4 @@
+import "babel-polyfill";
 import React from "react";
 import ReactDOM from "react-dom";
 import Routes from "./Routes";
@@ -6,7 +7,7 @@ import { Provider } from "react-redux";
 import { store } from "./Redux";
 
 const App = () => (
-  <Provider store={store}>
+  <Provider store={store()}>
     <BrowserRouter>
       <Routes />
     </BrowserRouter>
