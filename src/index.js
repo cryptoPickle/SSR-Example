@@ -29,7 +29,7 @@ app.get('*', (req, res) => {
     })
     .map((promise) => {
       if (promise) {
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve) => {
           promise.then(resolve).catch(resolve);
         });
       }
@@ -38,7 +38,6 @@ app.get('*', (req, res) => {
   Promise.all(promises).then(() => {
     const staticContext = {};
     const content = renderer(Routes, req, store, staticContext);
-    console.log(staticContext);
     if (staticContext.notFound) {
       return res.status(404).send(content);
     }

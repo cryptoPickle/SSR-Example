@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { fetchAdmins } from '../Redux/actions';
 import loadData from '../utils/loadData';
 import requireAuth from '../components/hocs/requireAuth';
-
+import Head from '../components/Head';
 class AdminList extends Component {
   componentDidMount() {
     this.props.fetchAdmins();
@@ -14,6 +14,7 @@ class AdminList extends Component {
   render() {
     return (
       <div>
+        <Head title={`${this.props.admins.info.length} admins loaded`} />
         <h3>Protected List of admins</h3>
         <ul>
           {this.props.admins.info
