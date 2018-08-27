@@ -29,13 +29,10 @@ const mapStateToProps = ({ users }) => {
   };
 };
 
-const load = loadData(fetchUsers);
-export { load };
-
 export default {
   component: connect(
     mapStateToProps,
     { fetchUsers }
   )(UserList),
-  load
+  load: loadData(fetchUsers)
 };

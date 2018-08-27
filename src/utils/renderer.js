@@ -5,17 +5,19 @@ import { Provider } from 'react-redux';
 import { renderRoutes } from 'react-router-config';
 import serialize from 'serialize-javascript';
 
-export default (Routes, req, store) => {
+export default (Routes, req, store, context) => {
   const content = renderToString(
     <Provider store={store}>
-      <StaticRouter location={req.path} context={{}}>
+      <StaticRouter location={req.path} context={context}>
         <Fragment>{renderRoutes(Routes)}</Fragment>
       </StaticRouter>
     </Provider>
   );
   return `
     <html> 
-      <head></head>
+      <head>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+      </head>
       <body>
         <div id='root'>${content}</div>
         <script>
